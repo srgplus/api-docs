@@ -87,13 +87,22 @@ Content-Type: application/json
 ```
 Required: `name`, `hubProfileId` (query param)
 
-> **WARNING: PUT replaces ALL fields!**
-> - Empty `context: []` deletes all context widgets
-> - Empty `channels: []` removes all channel assignments
-> - Empty `categories: []` removes all category assignments
-> - Missing `cover` sets cover to null
+> **CRITICAL: PUT replaces ALL fields! This WILL destroy data if used incorrectly.**
 >
-> **Always GET first, then include all existing data you want to keep!**
+> **MANDATORY workflow — no exceptions:**
+> 1. **GET** the content first
+> 2. **Copy** ALL existing values from the response
+> 3. **Modify** only the fields you need to change
+> 4. **Send** the complete object in PUT
+>
+> **What happens if you skip this:**
+> - `cover` not included → **cover image DELETED** (must re-upload manually)
+> - `channels: []` → removed from all channels
+> - `categories: []` → removed from all categories
+> - `context: []` → all text/links widgets deleted
+>
+> **Cover images CANNOT be restored via API** — they require manual re-upload in the app.
+> This is the most common mistake and the most painful to fix.
 
 ### Filter Content
 ```
