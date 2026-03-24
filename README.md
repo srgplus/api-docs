@@ -6,6 +6,7 @@ Public API documentation for SRG+ platform integrations.
 
 - [Workspace API Key Reference](./workspace-api-key.md) — Authentication, endpoints, examples
 - [Content Management](./content-management.md) — Create, update, organize content
+- [Cover Image Upload](./cover-upload.md) — Upload and manage cover images
 - [Troubleshooting](./troubleshooting.md) — Common errors and fixes
 
 ## Base URL
