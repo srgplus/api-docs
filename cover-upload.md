@@ -140,11 +140,16 @@ When updating content with PUT, to **keep the existing cover** without changing 
 {
   "name": "...",
   "cover": {
+    "image": null,
     "generateSignedUrl": false
   }
 }
 ```
 
-Setting `generateSignedUrl: false` tells the server: "don't change the cover."
+**Both fields are required:**
+- `"image": null` — required field (cannot be omitted)
+- `"generateSignedUrl": false` — tells the server "don't change the cover"
 
-**This is the key to safe updates!** Always include this when you don't want to change the cover.
+**Without `"image": null` you get 400 Bad Request!**
+
+**This is the key to safe updates!** Always include this in EVERY PUT when you don't want to change the cover.

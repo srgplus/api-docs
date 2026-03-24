@@ -93,7 +93,17 @@ Required: `name`, `hubProfileId` (query param)
 > 1. **GET** the content first
 > 2. **Copy** ALL existing values from the response
 > 3. **Modify** only the fields you need to change
-> 4. **Send** the complete object in PUT
+> 4. **Always include cover preservation** (see below)
+> 5. **Send** the complete object in PUT
+>
+> **Always include this to preserve the cover:**
+> ```json
+> "cover": {
+>   "image": null,
+>   "generateSignedUrl": false
+> }
+> ```
+> Both `image: null` AND `generateSignedUrl: false` are required. Without `image: null` → 400. Without the whole block → cover deleted.
 >
 > **What happens if you skip this:**
 > - `cover` not included → **cover image DELETED** (must re-upload manually)
