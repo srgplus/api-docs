@@ -325,6 +325,31 @@ DELETE /api/v1/contents/{contentId}/Content/sections/{sectionId}
 
 ---
 
+## Content Section References (get assets/content from sections)
+
+### Get Section References
+```
+GET /api/v1/contents/{contentId}/{categoryName}/{sectionId}/references?pageSize=20&order=Ascending
+```
+
+- `categoryName`: `Asset` for asset sections, `Content` for content sections
+- `order`: `Ascending` or `Descending` (case-sensitive, exactly as written)
+- `pageSize`: number of items per page
+- Returns signed download URLs for files (valid 7 days)
+
+**Example — get PDF from a section:**
+```bash
+curl -s "https://gateway.srgplus.com/api/v1/contents/{contentId}/Asset/{sectionId}/references?pageSize=20&order=Ascending" \
+  -H "X-API-Key: srgplus_YOUR_KEY"
+```
+
+### Get All Category References (without section filter)
+```
+GET /api/v1/contents/{contentId}/{categoryName}/references?pageSize=20&order=Ascending
+```
+
+---
+
 ## Assets
 
 ### Create Asset
